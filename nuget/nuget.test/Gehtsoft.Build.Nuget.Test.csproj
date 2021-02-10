@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="FullCorrectSample.xml" />
+    <None Remove="IncorrectSample1.xml" />
+    <None Remove="IncorrectSample2.xml" />
+    <None Remove="IncorrectSample3.xml" />
+    <None Remove="MinimumCorrectSample.xml" />
+    <None Remove="res\Gen1.xml" />
+    <None Remove="res\Gen2.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="res\Gen2.xml" />
+    <EmbeddedResource Include="res\IncorrectSample3.xml" />
+    <EmbeddedResource Include="res\IncorrectSample2.xml" />
+    <EmbeddedResource Include="res\IncorrectSample1.xml" />
+    <EmbeddedResource Include="res\Gen1.xml" />
+    <EmbeddedResource Include="res\MinimumCorrectSample.xml" />
+    <EmbeddedResource Include="res\FullCorrectSample.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="res\Gen1.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="res\Gen2.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.0.461" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.15.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\nuget\Gehtsoft.Build.Nuget.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<nu:nuget xmlns:nu="http://www.gehtsoft.com/build/nuget">
+  <nu:versions>
+    <nu:version id="1234.5678">release nodes</nu:version>
+  </nu:versions>
+  <nu:properties>
+    <nu:owner>owner</nu:owner>
+    <nu:projectUrl>http://url</nu:projectUrl>
+    <nu:copyright>My Company</nu:copyright>
+  </nu:properties>
+  <nu:projects>
+    <nu:project id="my.project">
+      <nu:description>My project</nu:description>
+    </nu:project>
+  </nu:projects>
+</nu:nuget>

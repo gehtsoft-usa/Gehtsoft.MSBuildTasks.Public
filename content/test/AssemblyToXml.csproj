@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp2.2;net48</TargetFrameworks>
+    <DefineConstants Condition=" '$(TargetFramework)' == 'netcoreapp2.2' ">NETCORE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.2' ">
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gehtsoft.Build.ContentDelivery" Version="0.1.11" IncludeAssets="build" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="KendoUILibs" Version="1.0.12" />
+  </ItemGroup>
+
+ <Target Name="CleanContent">
+  <ItemGroup>
+   <FilesToDelete Include="wwwroot/lib/Kendo.UI/**/*" />
+   <FilesToDelete Include="wwwroot/lib/Kendo.UI.2/**/*" />
+  </ItemGroup>
+  <Delete Files="@(FilesToDelete)" />
+  <RemoveDir Directories="wwwroot/lib/Kendo.UI"/>
+  <RemoveDir Directories="wwwroot/lib/Kendo.UI.2"/>
+ </Target>
+
+ <Target Name="Content">
+  <ContentFromPackage Package="KendoUILibs" Version="1.0.12" Destination="$(MSBuildProjectDirectory)/wwwroot/lib/Kendo.UI.2" />
+ </Target>
+
+ <Target Name="Put">
+  <PutContent File="d:\IMG_2746.jpg" BaseUrl="http://bower.gehtsoftusa.com" Key="$(gs-bower-key)"  />
+ </Target>
+
+
+</Project>

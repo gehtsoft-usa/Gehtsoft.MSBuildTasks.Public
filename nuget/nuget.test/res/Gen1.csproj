@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net46</TargetFrameworks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="reference1" Version="4.3.0" />
+    <PackageReference Include="reference2">
+      <Version>15.1.1012</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>
+

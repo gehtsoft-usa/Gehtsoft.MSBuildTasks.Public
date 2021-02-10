@@ -1,0 +1,11 @@
+<Project TreatAsLocalProperty="TaskFolder;TaskAssembly">
+  <PropertyGroup>
+    <TaskFolder Condition=" '$(MSBuildRuntimeType)' == 'Core' ">netstandard2.0</TaskFolder>
+    <TaskFolder Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net46</TaskFolder>
+    <TaskAssembly>$(MSBuildThisFileDirectory)..\tasks\$(TaskFolder)\Gehtsoft.Build.ContentDelivery.dll</TaskAssembly>
+  </PropertyGroup>
+
+  <UsingTask TaskName="Gehtsoft.Build.ContentDelivery.GetContent" AssemblyFile="$(TaskAssembly)" />
+  <UsingTask TaskName="Gehtsoft.Build.ContentDelivery.PutContent" AssemblyFile="$(TaskAssembly)" />
+  <UsingTask TaskName="Gehtsoft.Build.ContentDelivery.ContentFromPackage" AssemblyFile="$(TaskAssembly)" />
+</Project>

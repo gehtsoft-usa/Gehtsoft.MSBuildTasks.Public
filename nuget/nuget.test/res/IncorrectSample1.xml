@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<nuget xmlns="http://www.gehtsoft.com/build/nuget">
+  <versions>
+    <version id="1234.5678">release nodes</version>
+    <version id="1234.5679">release nodes 1</version>
+  </versions>
+  <properties>
+    <!-- no owners -->
+    <projectUrl>http://url</projectUrl>
+    <license>BSD</license>
+    <licenseUrl>http://license</licenseUrl>
+    <copyright>My Company</copyright>
+    <custom-property id="iconUrl">http://icon</custom-property>
+  </properties>
+  <projects>
+    <project id="my.project" location="my.location" sub-version="123" target-folder="lib">
+      <description>My project</description>
+      <additional-file file="my.location/license/license.txt" target="" />
+    </project>
+  </projects>
+  <exclude-references>
+    <reference id="reference1"/>
+    <reference id="reference2"/>
+  </exclude-references>
+</nuget>

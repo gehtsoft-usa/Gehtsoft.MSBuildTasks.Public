@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Gehtsoft.Build.Nuget": {
+      "commandName": "Executable",
+      "executablePath": "MSBuild",
+      "commandLineArgs": "-t:build",
+      "workingDirectory": "D:\\develop\\components\\UI\\WebApp\\DocumentUpload\\nuget1\\"
+    }
+  }
+}

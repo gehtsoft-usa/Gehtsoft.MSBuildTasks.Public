@@ -1,0 +1,9 @@
+<Project TreatAsLocalProperty="TaskFolder;TaskAssembly">
+  <PropertyGroup>
+    <TaskFolder Condition=" '$(MSBuildRuntimeType)' == 'Core' ">netstandard2.0</TaskFolder>
+    <TaskFolder Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net46</TaskFolder>
+    <TaskAssembly>$(MSBuildThisFileDirectory)..\tasks\$(TaskFolder)\Gehtsoft.Build.Nuget.dll</TaskAssembly>
+  </PropertyGroup>
+
+  <UsingTask TaskName="Gehtsoft.Build.Nuget.GenerateNuspec" AssemblyFile="$(TaskAssembly)" />
+</Project>

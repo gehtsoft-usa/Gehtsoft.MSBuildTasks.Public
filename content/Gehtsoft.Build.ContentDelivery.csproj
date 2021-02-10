@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl></PackageProjectUrl>
+    <PackageLicenseUrl>http://asp.gehtsoftusa.com/doc/privatelicense.html</PackageLicenseUrl>
+    <Copyright>Gehtsoft USA LLC</Copyright>
+    <Authors>Gehtsoft</Authors>
+    <Company>Gehtsoft</Company>
+    <Product>Gehtsoft</Product>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <Version>0.1.10</Version>
+    <Description>MSBuild task to deliver content into the projects</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="test\**" />
+    <EmbeddedResource Remove="test\**" />
+    <None Remove="test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="build\Gehtsoft.Build.ContentDelivery.props" PackagePath="build\" />
+    <Content Include="buildMultiTargeting\Gehtsoft.Build.ContentDelivery.props" PackagePath="buildMultiTargeting\" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
+    <Reference Include="System.IO.Compression" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Framework">
+      <Version>15.1.1012</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Build.Utilities.Core">
+      <Version>15.1.1012</Version>
+    </PackageReference>
+    <PackageReference Update="@(PackageReference)" PrivateAssets="All" />
+  </ItemGroup>
+</Project>

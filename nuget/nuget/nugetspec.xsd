@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.gehtsoft.com/build/nuget" xmlns:nu="http://www.gehtsoft.com/build/nuget" >
+
+  <xs:complexType name="version">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="id" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="custom-property">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="id" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="versions">
+    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="version" type="nu:version" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="properties">
+    <xs:sequence minOccurs="1" maxOccurs="1" >
+      <xs:sequence minOccurs="1" maxOccurs="1">
+        <xs:element name="owner" type="xs:string" minOccurs="1" maxOccurs="1" />
+        <xs:element name="projectUrl" type="xs:string" minOccurs="1" maxOccurs="1"  />
+        <xs:element name="license" type="xs:string" minOccurs="0" maxOccurs="1"  />
+        <xs:element name="licenseUrl" type="xs:string" minOccurs="0" maxOccurs="1"  />
+        <xs:element name="copyright" type="xs:string" minOccurs="1" maxOccurs="1"  />
+      </xs:sequence>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="custom-property" type="nu:custom-property"   />
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="additional-file">
+    <xs:attribute name="file" type="xs:string" use="required" />
+    <xs:attribute name="target" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="project">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="custom-property" type="nu:custom-property" minOccurs="0" maxOccurs="unbounded"  />
+      <xs:element name="additional-file" type="nu:additional-file" minOccurs="0" maxOccurs="unbounded"  />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="location" type="xs:string" />
+    <xs:attribute name="target-folder" type="xs:string" />
+    <xs:attribute name="sub-version" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="projects">
+    <xs:sequence>
+      <xs:element name="project" type="nu:project" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="exclude-reference">
+    <xs:attribute name="id" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="exclude-references">
+    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="reference" type="nu:exclude-reference" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nuget">
+    <xs:all>
+      <xs:element name="versions" type="nu:versions"  />
+      <xs:element name="properties" type="nu:properties"  />
+      <xs:element name="projects" type="nu:projects"  />
+      <xs:element name="exclude-references" type="nu:exclude-references" minOccurs="0" />
+    </xs:all>
+  </xs:complexType>
+
+  <xs:element name="nuget" type="nu:nuget" />
+</xs:schema>

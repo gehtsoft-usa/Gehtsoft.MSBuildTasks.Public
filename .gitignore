@@ -1,0 +1,17 @@
+obj
+bin
+out
+dst
+.vs
+.nuget
+.git
+.svn
+.vscode
+*.chi
+*.chm
+*.err
+*.~*
+*.vsix
+*.zip
+*.nupkg
+wwwroot
