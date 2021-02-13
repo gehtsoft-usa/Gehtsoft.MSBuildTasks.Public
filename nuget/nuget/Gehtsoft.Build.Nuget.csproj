@@ -11,7 +11,7 @@
     <Company>Gehtsoft</Company>
     <Product>Gehtsoft</Product>
     <NoPackageAnalysis>true</NoPackageAnalysis>
-    <Version>0.1.3</Version>
+    <Version>0.1.5</Version>
     <Description>MSBuild task to create nuget specifications for a set of related projects</Description>
   </PropertyGroup>
   <ItemGroup>

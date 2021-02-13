@@ -1,7 +1,7 @@
 <Project TreatAsLocalProperty="TaskFolder;TaskAssembly">
   <PropertyGroup>
     <TaskFolder Condition=" '$(MSBuildRuntimeType)' == 'Core' ">netstandard2.0</TaskFolder>
-    <TaskFolder Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net46</TaskFolder>
+    <TaskFolder Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net472</TaskFolder>
     <TaskAssembly>$(MSBuildThisFileDirectory)..\tasks\$(TaskFolder)\Gehtsoft.Build.Nuget.dll</TaskAssembly>
   </PropertyGroup>
 
