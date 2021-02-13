@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Xml.Schema;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Gehtsoft.Build.Nuget.Test
@@ -15,34 +16,27 @@ namespace Gehtsoft.Build.Nuget.Test
 
         }
 
-        [Test]
-        public void TestCorrect()
+        [TestCase("MinimumCorrectSample")]
+        [TestCase("FullCorrectSample")]
+        public void TestCorrect(string resource)
         {
-            using (Stream stream = typeof(TestValidation).Assembly.GetManifestResourceStream($"Gehtsoft.Build.Nuget.Test.res.MinimumCorrectSample.xml"))
+            using (Stream stream = typeof(TestValidation).Assembly.GetManifestResourceStream($"Gehtsoft.Build.Nuget.Test.res.{resource}.xml"))
             {
-                Assert.IsNotNull(new NugetConfigFile(stream));
-            }
-            using (Stream stream = typeof(TestValidation).Assembly.GetManifestResourceStream($"Gehtsoft.Build.Nuget.Test.res.FullCorrectSample.xml"))
-            {
-                Assert.IsNotNull(new NugetConfigFile(stream));
+                Action action = () => new NugetConfigFile(stream);
+                action.Should().NotThrow();
             }
         }
 
 
-        [Test]
-        public void TestIncorrect()
+        [TestCase("IncorrectSample1")]
+        [TestCase("IncorrectSample2")]
+        [TestCase("IncorrectSample3")]
+        public void TestIncorrect(string resource)
         {
-            using (Stream stream = typeof(TestValidation).Assembly.GetManifestResourceStream($"Gehtsoft.Build.Nuget.Test.res.IncorrectSample1.xml"))
+            using (Stream stream = typeof(TestValidation).Assembly.GetManifestResourceStream($"Gehtsoft.Build.Nuget.Test.res.{resource}.xml"))
             {
-                Assert.Throws<XmlSchemaValidationException>(() => new NugetConfigFile(stream));
-            }
-            using (Stream stream = typeof(TestValidation).Assembly.GetManifestResourceStream($"Gehtsoft.Build.Nuget.Test.res.IncorrectSample2.xml"))
-            {
-                Assert.Throws<XmlSchemaValidationException>(() => new NugetConfigFile(stream));
-            }
-            using (Stream stream = typeof(TestValidation).Assembly.GetManifestResourceStream($"Gehtsoft.Build.Nuget.Test.res.IncorrectSample3.xml"))
-            {
-                Assert.Throws<XmlSchemaValidationException>(() => new NugetConfigFile(stream));
+                Action action = () => new NugetConfigFile(stream);
+                action.Should().Throw<XmlSchemaValidationException>();
             }
         }
     }

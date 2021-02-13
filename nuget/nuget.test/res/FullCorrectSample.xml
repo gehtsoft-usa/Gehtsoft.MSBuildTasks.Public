@@ -7,7 +7,7 @@
   <properties>
     <owner>owner</owner>
     <projectUrl>http://url</projectUrl>
-    <license>BSD</license>
+    <license type="expression">BSD</license>
     <licenseUrl>http://license</licenseUrl>
     <copyright>My Company</copyright>
     <custom-property id="iconUrl">http://icon</custom-property>

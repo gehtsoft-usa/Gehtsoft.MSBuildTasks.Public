@@ -54,8 +54,8 @@ namespace Gehtsoft.Build.Nuget
             nuspec.Version = versionId;
             nuspec.Authors = config.Owner;
             nuspec.Owners = config.Owner;
-            if (!string.IsNullOrEmpty(config.License))
-                nuspec.SetLicense("expression", config.License);
+            if (config.License != null)
+                nuspec.SetLicense(config.License.Type, config.License.Value);
 
             if (!string.IsNullOrEmpty(config.LicenseUrl))
                 nuspec.LicenseUrl = config.LicenseUrl;
@@ -135,7 +135,16 @@ namespace Gehtsoft.Build.Nuget
                 nuspec.AddFile(Path.Combine(project.Location, $"bin/Release/{targetFramework}/{projectSpec.Id}.dll"), $"{projectSpec.TargetFolder}/{targetFramework}");
 
             foreach (var additionalFile in projectSpec.AdditionalFiles)
-                nuspec.AddFile(additionalFile.File, additionalFile.Target);
+            {
+                string source = Path.Combine(project.Location, additionalFile.File);
+                if (additionalFile.Target == "*")
+                {
+                    foreach (string targetFramework in targetFrameworks)
+                        nuspec.AddFile(source, $"{projectSpec.TargetFolder}/{targetFramework}");
+                }
+                else
+                    nuspec.AddFile(source, additionalFile.Target);
+            }
 
             return nuspec;
         }

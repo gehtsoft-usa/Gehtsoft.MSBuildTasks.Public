@@ -210,9 +210,9 @@ namespace Gehtsoft.Build.Nuget
                             projectElement.Attribute("location"), projectElement.Attribute("target-folder"));
                         mProjects.Add(project);
                         foreach (XmlElement customProperty in projectElement.Children("custom-property", cUrl))
-                            project.Properties.Add(new Property(customProperty.Attribute("id"), customProperty.InnerText));
+                            project.Properties.Add(new Property(customProperty.Attribute("id"), customProperty.InnerText));                       
                         foreach (XmlElement additionalFile in projectElement.Children("additional-file", cUrl))
-                            project.Properties.Add(new Property(additionalFile.Attribute("file"), additionalFile.Attribute("target")));
+                            project.AdditionalFiles.Add(new Project.AdditionalFile(additionalFile.Attribute("file"), additionalFile.Attribute("target")));
                     }
                 }
                 return mProjects;
@@ -239,9 +239,36 @@ namespace Gehtsoft.Build.Nuget
             }
         }
 
+        public class LicenseInfo
+        {
+            public string Type { get; }
+            public string Value { get; }
+            public LicenseInfo(string type, string value)
+            {
+                Type = type;
+                Value = value;
+            }
+        }
+
         public string Owner => mRoot.Children("properties", cUrl).FirstOrDefault()?.Children("owner", cUrl).FirstOrDefault()?.InnerText;
         public string ProjectUrl => mRoot.Children("properties", cUrl).FirstOrDefault()?.Children("projectUrl", cUrl).FirstOrDefault()?.InnerText;
-        public string License => mRoot.Children("properties", cUrl).FirstOrDefault()?.Children("license", cUrl).FirstOrDefault()?.InnerText;
+        private LicenseInfo mLicense;
+        public LicenseInfo License
+        {
+            get
+            {
+                if (mLicense == null)
+                {
+                    var el = mRoot.Children("properties", cUrl).FirstOrDefault()?.Children("license", cUrl).FirstOrDefault();
+                    if (el != null)
+                    {
+                        mLicense = new LicenseInfo(el.Attributes["type"].Value, el.InnerText);
+                    }
+                }
+                return mLicense;
+            }
+        }
+
         public string LicenseUrl => mRoot.Children("properties", cUrl).FirstOrDefault()?.Children("licenseUrl", cUrl).FirstOrDefault()?.InnerText;
         public string Copyright => mRoot.Children("properties", cUrl).FirstOrDefault()?.Children("copyright", cUrl).FirstOrDefault()?.InnerText;
 

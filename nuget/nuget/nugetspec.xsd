@@ -17,6 +17,14 @@
     </xs:simpleContent>
   </xs:complexType>
 
+  <xs:complexType name="license">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="type" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
   <xs:complexType name="versions">
     <xs:sequence minOccurs="1" maxOccurs="unbounded">
       <xs:element name="version" type="nu:version" />
@@ -28,7 +36,7 @@
       <xs:sequence minOccurs="1" maxOccurs="1">
         <xs:element name="owner" type="xs:string" minOccurs="1" maxOccurs="1" />
         <xs:element name="projectUrl" type="xs:string" minOccurs="1" maxOccurs="1"  />
-        <xs:element name="license" type="xs:string" minOccurs="0" maxOccurs="1"  />
+        <xs:element name="license" type="nu:license" minOccurs="0" maxOccurs="1"  />
         <xs:element name="licenseUrl" type="xs:string" minOccurs="0" maxOccurs="1"  />
         <xs:element name="copyright" type="xs:string" minOccurs="1" maxOccurs="1"  />
       </xs:sequence>
