@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.757
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gehtsoft.Build.Nuget", "nuget\Gehtsoft.Build.Nuget.csproj", "{83266586-0155-4692-B141-1DDDA5D40441}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gehtsoft.Build.Nuget.Test", "nuget.test\Gehtsoft.Build.Nuget.Test.csproj", "{1ACD7CE6-73A1-49F7-9414-B96017103F5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2E306D4A-2C4D-4AA0-8875-9133E1FE0256}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +31,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		                SolutionGuid = {EE6AEA02-094A-4B12-9049-AAA09FE77220}
-		                        SolutionGuid = {1BA8FEB6-EEFA-4CBD-B1AA-C5C06A972774}
-		        SolutionGuid = {6603619B-3421-4D31-A5A6-58E5407DF85C}
 		SolutionGuid = {E15EC521-AE7A-4C4F-BA3B-A9523B1F889C}
+		        SolutionGuid = {6603619B-3421-4D31-A5A6-58E5407DF85C}
+		                        SolutionGuid = {1BA8FEB6-EEFA-4CBD-B1AA-C5C06A972774}
+		                SolutionGuid = {EE6AEA02-094A-4B12-9049-AAA09FE77220}
 	EndGlobalSection
 EndGlobal

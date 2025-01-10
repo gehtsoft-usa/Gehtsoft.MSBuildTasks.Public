@@ -11,7 +11,7 @@
     <Company>Gehtsoft</Company>
     <Product>Gehtsoft</Product>
     <NoPackageAnalysis>true</NoPackageAnalysis>
-    <Version>0.1.5</Version>
+    <Version>0.1.7</Version>
     <Description>MSBuild task to create nuget specifications for a set of related projects</Description>
   </PropertyGroup>
   <ItemGroup>
@@ -36,7 +36,8 @@
       <Version>15.1.1012</Version>
     </PackageReference>
     <PackageReference Update="@(PackageReference)" PrivateAssets="All" />
-    <PackageReference Update="Microsoft.Build.Framework" Version="16.8.0" />
-    <PackageReference Update="Microsoft.Build.Utilities.Core" Version="16.8.0" />
+    <PackageReference Update="Microsoft.Build.Framework" Version="17.12.6" />
+    <PackageReference Update="Microsoft.Build.Utilities.Core" Version="17.12.6" />
+    <PackageReference Update="System.Xml.XPath.XmlDocument" Version="4.7.0" />
   </ItemGroup>
 </Project>

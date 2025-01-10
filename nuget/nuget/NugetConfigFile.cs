@@ -11,7 +11,6 @@ namespace Gehtsoft.Build.Nuget
 {
     public class NugetConfigFile
     {
-        private readonly XmlDocument mDocument;
         private readonly XmlElement mRoot;
 
         public class Version : IComparable<Version>
@@ -319,15 +318,15 @@ namespace Gehtsoft.Build.Nuget
 
         public NugetConfigFile(string file)
         {
-            mDocument = new XmlDocument();
-            mDocument.LoadFile(file, NugetSpecSchemaProvider.GetSchema());
-            mRoot = mDocument.DocumentElement;
+            var document = new XmlDocument();
+            document.LoadFile(file, NugetSpecSchemaProvider.GetSchema());
+            mRoot = document.DocumentElement;
         }
         public NugetConfigFile(Stream file)
         {
-            mDocument = new XmlDocument();
-            mDocument.LoadFile(file, NugetSpecSchemaProvider.GetSchema());
-            mRoot = mDocument.DocumentElement;
+            var document = new XmlDocument();
+            document.LoadFile(file, NugetSpecSchemaProvider.GetSchema());
+            mRoot = document.DocumentElement;
         }
 
     }

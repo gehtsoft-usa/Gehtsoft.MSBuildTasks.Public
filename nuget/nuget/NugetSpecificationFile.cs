@@ -63,6 +63,17 @@ namespace Gehtsoft.Build.Nuget
             get => this["projectUrl"];
             set => this["projectUrl"] = value;
         }
+
+        public string ReadMe
+        {
+            get => this["readme"];
+            set 
+            { 
+                if (string.IsNullOrWhiteSpace(value))
+                    this["readme"] = value; 
+            }
+        }
+
         public bool RequireLicenseAcceptance
         {
             get => this["requireLicenseAcceptance"] == "true";

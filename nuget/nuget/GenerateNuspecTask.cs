@@ -19,7 +19,7 @@ namespace Gehtsoft.Build.Nuget
         public override bool Execute()
         {
             if (!File.Exists(NugetConfig))
-                throw new Exception("Configuration file is not found");
+                throw new FileNotFoundException("Configuration file is not found");
 
             NugetConfigFile config = new NugetConfigFile(NugetConfig);
             foreach (NugetConfigFile.Project projectSpec in config.Projects)
@@ -128,7 +128,7 @@ namespace Gehtsoft.Build.Nuget
                 }
 
                 if (!found)
-                    throw new Exception("The reference project is not a part of current nuget specification");
+                    throw new ArgumentException("The reference project is not a part of current nuget specification");
             }
 
             foreach (string targetFramework in targetFrameworks)

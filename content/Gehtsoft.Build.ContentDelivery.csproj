@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -11,7 +11,7 @@
     <Company>Gehtsoft</Company>
     <Product>Gehtsoft</Product>
     <NoPackageAnalysis>true</NoPackageAnalysis>
-    <Version>0.1.10</Version>
+    <Version>0.1.11</Version>
     <Description>MSBuild task to deliver content into the projects</Description>
   </PropertyGroup>
   <ItemGroup>
@@ -24,9 +24,6 @@
     <Content Include="build\Gehtsoft.Build.ContentDelivery.props" PackagePath="build\" />
     <Content Include="buildMultiTargeting\Gehtsoft.Build.ContentDelivery.props" PackagePath="buildMultiTargeting\" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
-    <Reference Include="System.IO.Compression" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Framework">
@@ -35,6 +32,11 @@
     <PackageReference Include="Microsoft.Build.Utilities.Core">
       <Version>15.1.1012</Version>
     </PackageReference>
+    <PackageReference Include="System.IO.Compression">
+      <Version>4.3.0</Version>
+    </PackageReference>
     <PackageReference Update="@(PackageReference)" PrivateAssets="All" />
+    <PackageReference Update="Microsoft.Build.Framework" Version="17.12.6" />
+    <PackageReference Update="Microsoft.Build.Utilities.Core" Version="17.12.6" />
   </ItemGroup>
 </Project>
