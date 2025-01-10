@@ -31,7 +31,6 @@ namespace Gehtsoft.Build.Nuget.Test
             NugetSpecificationFile spec; 
             Action action = () => spec = task.HandleProject(config.Projects[0], proj, new FileInfo(typeof(TestValidation).Assembly.Location), config);
             action.Should().NotThrow();
-            ;
         }
     }
 }

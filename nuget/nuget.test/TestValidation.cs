@@ -3,6 +3,7 @@ using System.IO;
 using System.Xml.Schema;
 using FluentAssertions;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Gehtsoft.Build.Nuget.Test
 {
@@ -12,7 +13,7 @@ namespace Gehtsoft.Build.Nuget.Test
         [Test]
         public void LoadSchema()
         {
-            Assert.IsNotNull(NugetSpecSchemaProvider.GetSchema());
+            ClassicAssert.IsNotNull(NugetSpecSchemaProvider.GetSchema());
 
         }
 
